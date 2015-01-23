@@ -3,18 +3,13 @@ import sys
 from pyPdf import PdfFileReader, PdfFileWriter
  
 """
-2014-08 Ford Transmission Recall (Back).pdf
-2014-09 Novetta Escrow (JPMC) (Back).pdf
-2014-10-02 Encompass Auto Insurance (Back).pdf
-2014-10-29 Encompass Insurance (Back).pdf
-2014-11 JPMorgan Chase escrow statement (back).pdf
-2014-12-09 Experian Credit Report (back).pdf
-2014-12-29 IRS PIN (back).pdf
-2014-12-30 Sprint AIRAVE aggrement (back).pdf
-2014-12-31 Experian Credit Report Correction (back).pdf
-2014 Encompass Delux Home Policy (Back).pdf
-2014-Q3 DAF Statement (Back).pdf
-baseFile = "1999-02-03 Letter from Lindsey"
+The code currently expects the first argument to be the 
+'base name' of the PDF files. Implied is that there are 
+two files 1) the <base name> + " (front).pdf" that contains
+the odd pages and 2) <base name> + " (back).pdf" that 
+contains the (reverse ordered) even pages. The result
+will be a file called <base name>+".pdf" that is the 
+merged PDF file.
 """
 baseFile = "2014 Encompass Auto Policy Info"
 baseFile = sys.argv[1]
