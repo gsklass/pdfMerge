@@ -47,5 +47,3 @@ outputStream = file(baseFile +".pdf", "wb")
 output.write(outputStream)
 outputStream.close()
 
-#change by jeff
-
