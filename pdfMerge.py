@@ -1,5 +1,5 @@
 # Merge back PDFs
-import sys
+import sys,os
  
 """
 The code currently expects the first argument to be the 
@@ -47,7 +47,7 @@ def baseNameToNamingConvention(baseName):
     print "problems opening results file"
     return "","",""
   aFile.close()
-  print frontFile,backFile,resultsFile
+  #print frontFile,backFile,resultsFile
   return frontFile,backFile,resultsFile
 
 def pdfMerger(frontFileName, backFileName, resultsFileName):
@@ -74,5 +74,20 @@ def pdfMerger(frontFileName, backFileName, resultsFileName):
 
 if __name__ == "__main__":
   baseName = sys.argv[1]
-  frontName,backName,resultName = baseNameToNamingConvention(baseName)
-  pdfMerger(frontName,backName,resultName)
+  if baseName == "--all":
+    import fileMatch
+    fileList = fileMatch.find("*ront).pdf","files")
+    for afile in fileList:
+      #print afile[:-12]
+      frontName,backName,resultName = baseNameToNamingConvention(afile[:-12])
+      size = pdfMerger(frontName,backName,resultName)
+      if size > 0: 
+        os.remove(frontName)
+        os.remove(backName)
+  else:
+    frontName,backName,resultName = baseNameToNamingConvention(baseName)
+    pdfMerger(frontName,backName,resultName)
+    if size > 0: 
+      os.remove(frontName)
+      os.remove(backName)
+
